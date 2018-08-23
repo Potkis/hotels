@@ -1,0 +1,36 @@
+<% include ../partials/header %> 
+
+     <header class="jumbotron">
+         <div class="container">
+             <h1><span class="glyphicon glyphicon-tent"></span> Welcome To Hotels!</h1>
+             <p>View the most beautiful hotels around the globe</p>
+             <p>
+                <a class="btn btn-primary btn-lg" href="/hotels/new">Add New Hotel</a>
+             </p>
+              <p>
+              <form action="/hotels" method="GET" class="form-inline" id="hotel-search">
+                <div class="form-group">
+                  <input type="text" name="search" placeholder="Search hotel..." class="form-control">
+                </div>
+              </form>
+             </p>
+         </div>
+     </header>
+     
+     <div class="row text-center flex-wrap" id="hotel-grid">
+        <% hotels.forEach(function(hotel){ %>
+            <div class="col-md-3 col-sm-6">
+                <div class="thumbnail">
+                   <img src="<%= hotel.image %>">
+                   <div class="caption">
+                       <h4><%= hotel.name %></h4>
+                   </div>
+                   <p>
+                       <a href="/hotels/<%= hotel._id %>" class="btn btn-primary">More Info</a>
+                   </p>
+                </div>
+            </div>
+        <% }); %>
+    </div>
+
+<% include ../partials/footer %>
